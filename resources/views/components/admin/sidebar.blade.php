@@ -83,6 +83,14 @@ It is just to check the uri segment value so that we can activate the currenct s
         </a>
       </li>
 
+      <!--Demo -->
+      <li class="menu-item {{Request::segment(2)=='demo' ? 'menu-item active' : ''}}">
+        <a href="{{route('demo')}}" class="menu-link ">
+           <i class=' menu-icon bx bx-book-content' ></i>
+          <div data-i18n="Layouts">Demo</div>
+        </a>
+      </li>
+
       <!-- News Letter subscription -->
 
        <!--Contact us -->
