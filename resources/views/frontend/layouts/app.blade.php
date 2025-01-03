@@ -39,6 +39,7 @@
         gtag('js', new Date());
 
         gtag('config', 'G-0QQEC2R0S0');
+
     </script>
 
 
@@ -66,15 +67,19 @@
     <script>
         toastr.options = {
 
-            "progressBar": true,
-            "closeButton": true,
-        }
+            "progressBar": true
+            , "closeButton": true
+        , }
 
         toastr.success("{{ Session::get('message') }}");
+
     </script>
 
     @endif
     <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
         var currentUrl = window.location.href;
         var navItems = document.querySelectorAll('.navbar-nav .nav-item');
         navItems.forEach(function(item) {
@@ -85,11 +90,6 @@
             }
         });
 
-
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
     </script>
 
 
