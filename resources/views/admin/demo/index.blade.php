@@ -36,7 +36,7 @@
                                 </button>
                             </td>
                             <td>
-                                <form action="{{ route('contact.destroy' , $demo->id) }}" method="POST" class="d-inline" id="deleteForm{{$demo->id}}">
+                                <form action="{{ route('demo.destroy' , $demo->id) }}" method="POST" class="d-inline" id="deleteForm{{$demo->id}}">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" onclick="confirmDelete({{$demo->id}})" class="btn btn-danger btn-sm">Delete</button>

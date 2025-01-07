@@ -15,7 +15,7 @@ class ScheduleDemoController extends Controller
     public function index()
     {
         $demos = ScheduleDemo::all();
-        return view ('admin.demo.index', compact('demos'));
+        return view('admin.demo.index', compact('demos'));
     }
 
     /**
@@ -101,6 +101,12 @@ class ScheduleDemoController extends Controller
      */
     public function destroy(ScheduleDemo $scheduleDemo)
     {
-        //
+        if ($scheduleDemo->delete()) {
+            $this->alert('Success', 'Contact Removed Successfully', 'success');
+            return redirect()->route('demo');
+        }
+
+        $this->alert('error', 'Something went wrong', 'danger');
+        return redirect()->back();
     }
 }

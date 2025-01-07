@@ -27,7 +27,6 @@ Route::get('/blog/{id}', [WebSiteController::class, 'viewBlogInner'])->name('vie
 Route::get('/contact-us', [WebSiteController::class, 'viewContactUsPage'])->name('viewContactUsPage');
 Route::get('/schedule-demo', [WebSiteController::class, 'viewDemo'])->name('demo.view');
 
-
 /*--------------------------------- Auth Routes ---------------------------------*/
 
 Route::get('/admin/login', [AuthController::class, 'index'])->name('login.view')->middleware('guest');
@@ -40,9 +39,6 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-
-
     Route::get('/tags', [TagsController::class, 'index'])->name('tags');
     Route::get('/tags/create', [TagsController::class, 'create'])->name('tags.create');
     Route::post('/tags/store', [TagsController::class, 'store'])->name('tags.store');
@@ -50,19 +46,15 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::delete('/tags/edit/{tags}', [TagsController::class, 'destroy'])->name('tags.destroy');
     Route::put('/tags/update/{tags}', [TagsController::class, 'update'])->name('tags.update');
 
-
-
     Route::get('/subscribe', [ContactUsController::class, 'index'])->name('subscribe');
     Route::delete('/subscribe/{contactus}', [ContactUsController::class, 'destroy'])->name('contact.destroy');
-
-
 
     Route::get('/news-letter', [NewsLetterController::class, 'index'])->name('news');
     Route::delete('/news-letter/{newsletter}', [NewsLetterController::class, 'destroy'])->name('news.destroy');
 
-    /////////Demo Inquiry //////
-
     Route::get('/demo', [ScheduleDemoController::class, 'index'])->name('demo');
+    Route::delete('/demo/{scheduleDemo}', [ScheduleDemoController::class, 'destroy'])->name('demo.destroy');
+
     
     /*-------------------------------
     
@@ -86,8 +78,6 @@ Route::group(['middleware' => 'auth', 'prefix' => '/admin'], function () {
     Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'auth']], function () {
         \UniSharp\LaravelFilemanager\Lfm::routes();
     });
-
-
 
 
     /*----------------------------------- Meta ---------------------------------*/
